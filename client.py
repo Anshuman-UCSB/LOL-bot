@@ -12,6 +12,10 @@ id = req.json()['id']
 
 print("Client initialized, connecting to",host)
 
+def waitPixel(x, y, color):
+	while pyautogui.pixel(x,y) != color:
+		sleep(.1)
+
 while True:
 	req = requests.get(f"{host}/instr/{id}")
 	instr = req.json()
@@ -21,11 +25,10 @@ while True:
 		run("TASKKILL /F /IM LeagueClient.exe")
 		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
 		pyautogui.displayMousePosition()
-		while pyautogui.pixel(345,142) != (235,0,41):
-			print(pyautogui.pixel(345,142))
+		waitPixel(345,142,(235,0,41))
 		pyautogui.click(285,317)
 		pyautogui.typewrite(instr['user'])
 		pyautogui.press("tab")
 		pyautogui.typewrite(instr['pass'])
 		pyautogui.press("enter")
-		
+		waitPixel(894,135,(201,170,104))
