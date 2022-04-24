@@ -22,4 +22,10 @@ while True:
 		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
 		while pyautogui.pixel(345,142) != (235,0,41):
 			print(pyautogui.pixel(345,142))
+		pyautogui.click(285,317)
+		pyautogui.typewrite(instr['user'])
+		pyautogui.press("tab")
+		pyautogui.typewrite(instr['pass'])
+		pyautogui.press("enter")
+		
 		pyautogui.displayMousePosition()
