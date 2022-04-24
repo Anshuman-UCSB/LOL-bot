@@ -38,7 +38,7 @@ async def setup():
 	with open("accounts.txt",'r') as f:
 		acc = map(lambda x: x.split(":"), f.read().splitlines())
 		for client, (user,pw) in zip(clients,acc):
-			client.instr = {"instr":"login", "user":user, "pw":pw}
+			client.instr = {"instr":"login", "user":user, "pass":pw}
 
 @app.get("/instr/{id}")
 async def getinstr(id:int):
