@@ -22,4 +22,6 @@ while True:
 		print("?2")
 		while pyautogui.pixel(345,142) != (235,0,41):
 			print(pyautogui.pixel(345,142))
+		sleep(1)
 		print("opened")
+		sleep(10)
