@@ -1,4 +1,5 @@
 from subprocess import run
+import traceback
 run(['git','pull'])
 try:
 	import client
