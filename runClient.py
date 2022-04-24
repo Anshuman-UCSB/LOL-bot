@@ -1,3 +1,7 @@
 from subprocess import run
 run(['git','pull'])
-import client
+try:
+	import client
+except Exception as ex:
+    print(ex)
+    input()
