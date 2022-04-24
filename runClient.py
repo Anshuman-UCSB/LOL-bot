@@ -3,5 +3,5 @@ run(['git','pull'])
 try:
 	import client
 except Exception as ex:
-    print(ex)
+    traceback.print_exc()
     input()
