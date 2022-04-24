@@ -19,16 +19,17 @@ class Client():
 		return self.__str__()
 
 clients = []
+clientNum = 1
 id = 0
 
 @app.get("/register")
 async def root():
 	global id
-	if id == 5:
+	if id == clientNum:
 		return {"msg":"err"}
 	clients.append(Client(id))
 	print(f"Client {id} registered, waiting for 5 Clients to start")
-	if id == 4:
+	if id == clientNum-1:
 		await setup()
 	id+=1
 	return {"id":id-1}
