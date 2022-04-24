@@ -17,3 +17,5 @@ while True:
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
 		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
+		print("?here?")
+		sleep(100)
