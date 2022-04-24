@@ -17,7 +17,9 @@ while True:
 		sleep(1)
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
+		print("?")
 		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
+		print("?2")
 		while pyautogui.pixel(345,142) != (235,0,41):
 			print(pyautogui.pixel(345,142))
 		print("opened")
