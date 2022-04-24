@@ -10,6 +10,8 @@ host = "http://72.205.82.44:8008"
 req = requests.get(host+"/register")
 id = req.json()['id']
 
+print("Client initialized, connecting to",host)
+
 while True:
 	req = requests.get(f"{host}/instr/{id}")
 	instr = req.json()
