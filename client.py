@@ -31,7 +31,8 @@ while True:
 			pass
 		waitPixel(345,142,(235,0,41))
 		pyautogui.click(285,317)			# login screen
-		sleep(.1)
+		print("Client is opened")
+		sleep(10)
 		pyautogui.typewrite(instr['user'])
 		sleep(.1)
 		pyautogui.press("tab")
