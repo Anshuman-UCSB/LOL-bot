@@ -61,7 +61,7 @@ nextState = {
 async def getTask(id: int, data: Request):
 	dat = await data.body()
 	clients[id].state = dat
-	clients[id].instr = {"instr":(nextState if id>0 else nextState0)[dat]}
+	clients[id].instr = {"instr":(nextState if id==0 else nextState0)[dat]}
 	print("saving screen")
 	return {"msg":"recv"}
 
