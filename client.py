@@ -3,7 +3,7 @@ import os
 from time import sleep
 from capture import *
 import pickle
-from subprocess import run,, Popen
+from subprocess import run
 import pyautogui
 
 host = "http://72.205.82.44:8008"
