@@ -14,7 +14,7 @@ print("Client initialized, connecting to",host)
 def waitPixel(x, y, color):
 	while pyautogui.pixel(x,y) != color:
 		print(f"waiting for ({x},{y}) to turn to {color}")
-		sleep(.1)
+		sleep(.5)
 def whilePixel(x, y, color, xp, yp):
 	waitPixel(x,y,color)
 	while pyautogui.pixel(x,y) == color:
