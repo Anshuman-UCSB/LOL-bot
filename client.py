@@ -26,7 +26,7 @@ while True:
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
 		try:
-			run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live', timeout = 5)
+			run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live', timeout = 20)
 		except TimeoutExpired:
 			pass
 		waitPixel(345,142,(235,0,41))
@@ -40,6 +40,6 @@ while True:
 		pyautogui.press("enter")
 		waitPixel(894,135,(201,170,104)) 	# click play screen
 		waitPixel(1290, 137,(227,186,61))	# home screen
-		pyautogui.click(894,135)			# 
+		pyautogui.click(894,135)			# click play button
 		pyautogui.displayMousePosition()
 
