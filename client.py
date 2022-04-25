@@ -19,7 +19,7 @@ def whilePixel(x, y, color, xp, yp):
 	waitPixel(x,y,color)
 	while pyautogui.pixel(x,y) == color:
 		print(f"clicking while ({x},{y}) is {color}")
-		pyautogui.click(xp,yp)
+		pyautogui.click(xp,yp,clicks=2,interval=.25)
 		sleep(1)
 
 while True:
