@@ -16,7 +16,6 @@ def waitPixel(x, y, color):
 	while pyautogui.pixel(x,y) != color:
 		print(f"waiting for ({x},{y}) to turn to {color}")
 		sleep(.1)
-	print("worked")
 
 while True:
 	req = requests.get(f"{host}/instr/{id}")
@@ -25,10 +24,7 @@ while True:
 		sleep(1)
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
-		try:
-			run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live', timeout = 20)
-		except TimeoutExpired:
-			pass
+		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
 		waitPixel(345,142,(235,0,41))
 		pyautogui.click(285,317)			# login screen
 		print("Client is opened")
