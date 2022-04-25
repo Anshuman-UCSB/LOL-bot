@@ -15,6 +15,12 @@ def waitPixel(x, y, color):
 	while pyautogui.pixel(x,y) != color:
 		print(f"waiting for ({x},{y}) to turn to {color}")
 		sleep(.1)
+def whilePixel(x, y, color, xp, yp):
+	waitPixel(x,y,color)
+	while pyautogui.pixel(x,y) == color:
+		print(f"clicking while ({x},{y}) is {color}")
+		pyautogui.click(xp,yp)
+		sleep(1)
 
 while True:
 	req = requests.get(f"{host}/instr/{id}")
@@ -37,14 +43,11 @@ while True:
 		sleep(.1)
 		pyautogui.press("enter")
 		waitPixel(894,135,(201,170,104)) 	# play screen
-		waitPixel(1290, 137,(227,186,61))	# home screen
-		sleep(.5)
-		pyautogui.click(894,135)			# click play button
-		waitPixel(631,205,(120,90,40))		# choose mode screen
-		pyautogui.click(449,322)			# summoners rift
-		sleep(.5)
+		whilePixel(1290, 137,(227,186,61), 894,135)	# home screen
+		whilePixel(631,205,(120,90,40),449,322)		# choose mode screen
+		sleep(1)
 		pyautogui.click(412,624)			# blind pick
-		sleep(.5)
+		sleep(1)
 		pyautogui.click(412,624)			# confirm
 		waitPixel(1404,249,(20,152,163))	# in lobby
 		pyautogui.displayMousePosition()
