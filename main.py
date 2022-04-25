@@ -21,7 +21,7 @@ class Client():
 		return self.__str__()
 
 clients = []
-clientNum = 1 if DEBUG else 5
+clientNum = 2 if DEBUG else 5
 id = 0
 lobbyId = ""
 
