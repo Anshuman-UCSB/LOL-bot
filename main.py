@@ -40,8 +40,10 @@ async def root():
 async def setup():
 	with open("accounts.txt",'r') as f:
 		acc = map(lambda x: x.split(":"), f.read().splitlines())
+		first = True
 		for client, (user,pw) in zip(clients,acc):
-			client.instr = {"instr":"createLobby", "user":user, "pass":pw}
+			client.instr = {"instr":"createLobby" if first else "joinLobby", "user":user, "pass":pw}
+			first = False
 
 @app.get("/instr/{id}")
 async def getinstr(id:int):
