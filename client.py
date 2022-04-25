@@ -16,6 +16,7 @@ def waitPixel(x, y, color):
 	while pyautogui.pixel(x,y) != color:
 		print(f"waiting for ({x},{y}) to turn to {color}")
 		sleep(.1)
+	print("worked")
 
 while True:
 	req = requests.get(f"{host}/instr/{id}")
@@ -29,7 +30,7 @@ while True:
 		except TimeoutExpired:
 			pass
 		waitPixel(345,142,(235,0,41))
-		pyautogui.click(285,317)
+		pyautogui.click(285,317)			# login screen
 		pyautogui.typewrite(instr['user'])
 		sleep(.1)
 		pyautogui.press("tab")
@@ -37,6 +38,8 @@ while True:
 		pyautogui.typewrite(instr['pass'])
 		sleep(.1)
 		pyautogui.press("enter")
-		waitPixel(894,135,(201,170,104))
+		waitPixel(894,135,(201,170,104)) 	# click play screen
+		waitPixel(1290, 137,(227,186,61))	# home screen
+		pyautogui.click(894,135)			# 
 		pyautogui.displayMousePosition()
 
