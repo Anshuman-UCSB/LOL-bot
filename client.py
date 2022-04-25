@@ -24,7 +24,7 @@ while True:
 		sleep(1)
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
-		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live')
+		run('"C:\Riot Games\Riot Client\RiotClientServices.exe" --launch-product=league_of_legends --launch-patchline=live', timeout=5)
 		waitPixel(345,142,(235,0,41))
 		pyautogui.click(285,317)
 		pyautogui.typewrite(instr['user'])
