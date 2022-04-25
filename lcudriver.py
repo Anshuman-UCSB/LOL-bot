@@ -23,3 +23,6 @@ async def connect(connection):
 
 	accept = await connection.request('post','/lol-matchmaking/v1/ready-check/decline')
 	print(await accept.json())
+
+if __name__ == "__main__":
+	connector.start()
