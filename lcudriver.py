@@ -35,7 +35,9 @@ async def connect(connection):
 	print(req)
 	partyId = req.text
 	print(partyId)
+	sleep(2)
 	await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
+	sleep(5)
 	
 	# await connection.request('post','/lol-lobby/v2/lobby/matchmaking/search')
 	# sleep(3)
