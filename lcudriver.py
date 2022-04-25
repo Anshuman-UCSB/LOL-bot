@@ -33,7 +33,7 @@ async def getLobbyId(connection):
 async def connect(connection):
 	req = requests.get(host+"/lobby")
 	print(req)
-	partyId = req.body()
+	partyId = req.text
 	print(partyId)
 	await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
 	
