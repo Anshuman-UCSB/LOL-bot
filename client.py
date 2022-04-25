@@ -46,6 +46,7 @@ while True:
 		# whilePixel(1290, 137,(227,186,61),443,151)	# home screen
 		waitPixel(1290, 137,(227,186,61))	# home screen
 		requests.post(host+'/tasks/'+str(id), data=instr['instr'])
+		sleep(2)
 		# pyautogui.displayMousePosition()
 	elif instr['createLobby']:
 		# whilePixel(631,205,(120,90,40),449,322)		# choose mode screen
