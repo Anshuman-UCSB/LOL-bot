@@ -43,10 +43,11 @@ while True:
 		sleep(.1)
 		pyautogui.press("enter")
 		waitPixel(894,135,(201,170,104)) 	# play screen
-		# whilePixel(1290, 137,(227,186,61),443,151)	# home screen
+		whilePixel(1290, 137,(227,186,61),443,151)	# home screen
 		waitPixel(1290, 137,(227,186,61))	# home screen
+		requests.post(host+'/tasks/'+str(id), data=instr['instr'])
 		# pyautogui.displayMousePosition()
-		
+	elif instr['createLobby']:
 		# whilePixel(631,205,(120,90,40),449,322)		# choose mode screen
 		# sleep(1)
 		# pyautogui.click(412,624)			# blind pick

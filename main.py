@@ -47,9 +47,14 @@ async def getinstr(id:int):
 	except IndexError:
 		return {"msg":"Invalid id"}
 
-@app.post("/screen/{id}")
+nextState = {
+	"login": "createLobby",
+}
+
+@app.post("/tasks/{id}")
 async def getScreen(id: int, data: Request):
 	dat = await data.body()
-	clients[id].screen = pickle.loads(dat)
+	clients[id].state = dat
+	clients[id].instr = {"instr":nextState[dat]}
 	print("saving screen")
 	return {"msg":"recv"}
