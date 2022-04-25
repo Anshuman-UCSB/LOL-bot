@@ -31,7 +31,7 @@ async def root():
 	if id == clientNum:
 		return {"msg":"err"}
 	clients.append(Client(id))
-	print(f"Client {id} registered, waiting for 5 Clients to start")
+	print(f"Client {id} registered, waiting for {clientNum} Clients to start")
 	if id == clientNum-1:
 		await setup()
 	id+=1
@@ -41,7 +41,7 @@ async def setup():
 	with open("accounts.txt",'r') as f:
 		acc = map(lambda x: x.split(":"), f.read().splitlines())
 		for client, (user,pw) in zip(clients,acc):
-			client.instr = {"instr":"login", "user":user, "pass":pw}
+			client.instr = {"instr":"createLobby", "user":user, "pass":pw}
 
 @app.get("/instr/{id}")
 async def getinstr(id:int):
