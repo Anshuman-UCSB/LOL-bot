@@ -43,8 +43,8 @@ while True:
 		sleep(.1)
 		pyautogui.press("enter")
 		waitPixel(894,135,(201,170,104)) 	# play screen
-		whilePixel(1290, 137,(227,186,61), 894,135)	# home screen
-		pyautogui.displayMousePosition()
+		whilePixel(1290, 137,(227,186,61),443,151)	# home screen
+		# pyautogui.displayMousePosition()
 		whilePixel(631,205,(120,90,40),449,322)		# choose mode screen
 		sleep(1)
 		pyautogui.click(412,624)			# blind pick
