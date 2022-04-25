@@ -16,6 +16,7 @@ async def connect(connection):
 	while(queueResponse != "InProgress"):
 		queuePop = await connection.request('get','/lol-matchmaking/v1/ready-check')
 		resp = await queuePop.json()
+		print(dict(resp))
 		queueResponse = (dict(resp)['state'])
 		print(queueResponse)
 		sleep(2)
