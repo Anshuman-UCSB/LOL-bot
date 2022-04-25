@@ -3,7 +3,7 @@ import os
 from time import sleep
 from capture import *
 import pickle
-from subprocess import run, Popen
+from subprocess import run,, Popen
 import pyautogui
 
 host = "http://72.205.82.44:8008"
@@ -24,7 +24,9 @@ while True:
 		sleep(1)
 	elif instr['instr'] == 'login':
 		run("TASKKILL /F /IM LeagueClient.exe")
-		Popen(['"C:\Riot Games\Riot Client\RiotClientServices.exe"','--launch-product=league_of_legends','--launch-patchline=live'])
+		pyautogui.press('win')
+		pyautogui.typewrite("League of legends")
+		pyautogui.press('enter')
 		waitPixel(345,142,(235,0,41))
 		pyautogui.click(285,317)			# login screen
 		print("Client is opened")
