@@ -1,7 +1,7 @@
 import requests
 import os
 from time import sleep
-import lcudriver
+import lculeader
 from capture import *
 from subprocess import run
 import pyautogui
@@ -56,5 +56,5 @@ while True:
 		# sleep(1)
 		# pyautogui.click(412,624)			# confirm
 		# waitPixel(1404,249,(20,152,163))	# in lobby
-		lcudriver.connector.start()
+		lculeader.connector.start()
 
