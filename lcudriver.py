@@ -9,48 +9,32 @@ async def getIdName(connection):
 	return (json['accountId'],json['displayName'])
 
 async def invite(connection, id, name):
-	myid, myName = await getIdName(connection)
+	myId, myName = await getIdName(connection)
 	body = {
-			"eligibility": {
-				"eligible": true,
-				"queueId": 0,
-				"restrictions": [
-				{
-					"expiredTimestamp": 0,
-					"restrictionArgs": {
-					"additionalProp1": "string",
-					"additionalProp2": "string",
-					"additionalProp3": "string"
-					},
-					"restrictionCode": "QueueDisabled",
-					"summonerIds": [
-					0
-					],
-					"summonerIdsString": "string"
-				}
-				]
-			},
-			"errorType": "string",
-			"fromSummonerId": myId,
-			"fromSummonerName": myName,
-			"id": "string",
-			"invitationMetaData": {
-				"additionalProp1": {}
-			},
-			"state": "Requested",
-			"timestamp": "string",
+			# "fromSummonerId": myId,
+			# "fromSummonerName": myName,
+			# "state": "Requested",
 			"toSummonerId": id,
-			"toSummonerName": name,
+			# "toSummonerName": name,
 		}
-	req = await connection.request('post', '/lol-lobby/v1/lobby/invitations')
+	req = await connection.request('post', '/lol-lobby/v1/lobby/invitations', json=body)
 	pass
+
+async def getLobbyId(connection):
+	req = await connection.request('get', '/lol-lobby/v2/lobby')
+	json = await req.json()
+	return json['chatRoomId']
+
 
 @connector.ready
 async def connect(connection):
 
-	print(await getIdName(connection))
-	await invite(connection,*(243907053, 'Hevraz'))
 	# await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
+	# print(await getIdName(connection))
+	# sleep(5)
+	# await invite(connection,*(91622819, 'Hevraz'))
+	await connection.request('post', '/lol-lobby/v2/party/2f5efd75-e75b-42d0-9260-8020090ae1d8/join')
+	print(await(await connection.request('get', '/lol-lobby/v2/lobby')).json())
 	
 	# await connection.request('post','/lol-lobby/v2/lobby/matchmaking/search')
 	# sleep(3)
