@@ -7,6 +7,10 @@ app = FastAPI()
 
 DEBUG = True
 
+from pydantic import BaseModel
+class Data(BaseModel):
+    user: str
+
 class Client():
 	def __init__(self, id):
 		self.id = id
@@ -55,7 +59,7 @@ nextState = {
 }
 
 @app.post("/tasks/{id}")
-async def getTask(id: int, data: Request):
+async def getTask(id: int, data: Data):
 	dat = await data.body()
 	clients[id].state = dat
 	clients[id].instr = {"instr":nextState[dat]}
