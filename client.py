@@ -12,13 +12,13 @@ id = req.json()['id']
 print("Client initialized, connecting to",host)
 
 def waitPixel(x, y, color):
+	print(f"waiting for ({x},{y}) to turn to {color}")
 	while pyautogui.pixel(x,y) != color:
-		print(f"waiting for ({x},{y}) to turn to {color}")
 		sleep(.5)
 def whilePixel(x, y, color, xp, yp):
 	waitPixel(x,y,color)
+	print(f"clicking while ({x},{y}) is {color}")
 	while pyautogui.pixel(x,y) == color:
-		print(f"clicking while ({x},{y}) is {color}")
 		pyautogui.click(xp,yp,clicks=2,interval=.25)
 		sleep(1)
 
