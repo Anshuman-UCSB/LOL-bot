@@ -2,3 +2,4 @@ numpy
 mss
 requests
 pyautogui
+lcu-driver
