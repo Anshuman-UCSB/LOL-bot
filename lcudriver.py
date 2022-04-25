@@ -2,6 +2,8 @@ from lcu_driver import Connector
 import requests
 from time import time, sleep
 
+host = "http://72.205.82.44:8008"
+
 connector = Connector()
 
 async def getIdName(connection):
