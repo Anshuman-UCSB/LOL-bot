@@ -48,11 +48,11 @@ async def getinstr(id:int):
 		return {"msg":"Invalid id"}
 
 nextState = {
-	"login": "createLobby",
+	b"login": "createLobby",
 }
 
 @app.post("/tasks/{id}")
-async def getScreen(id: int, data: Request):
+async def getTask(id: int, data: Request):
 	dat = await data.body()
 	clients[id].state = dat
 	clients[id].instr = {"instr":nextState[dat]}
