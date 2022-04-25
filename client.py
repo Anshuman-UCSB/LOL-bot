@@ -1,7 +1,7 @@
 import requests
 import os
 from time import sleep
-import lculeader
+import lculeader,lcudriver
 from capture import *
 from subprocess import run
 import pyautogui
@@ -50,11 +50,7 @@ while True:
 		sleep(5)
 		# pyautogui.displayMousePosition()
 	elif instr['instr']=="createLobby":
-		# whilePixel(631,205,(120,90,40),449,322)		# choose mode screen
-		# sleep(1)
-		# pyautogui.click(412,624)			# blind pick
-		# sleep(1)
-		# pyautogui.click(412,624)			# confirm
-		# waitPixel(1404,249,(20,152,163))	# in lobby
 		lculeader.connector.start()
+	elif instr['instr']=="createLobby":
+		lcudriver.connector.start()
 
