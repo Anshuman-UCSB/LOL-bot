@@ -67,7 +67,7 @@ async def getTask(id: int, data: Request):
 	return {"msg":"recv"}
 
 @app.post("/lobby")
-async def getTask(id: int, data: Data):
+async def getTask(id: int, data: Request):
 	global lobbyId
 	dat = await data.body()
 	lobbyId = dat
