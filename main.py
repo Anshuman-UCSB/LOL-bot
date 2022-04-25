@@ -23,6 +23,7 @@ class Client():
 clients = []
 clientNum = 2 if DEBUG else 5
 id = 0
+lobbyId = ""
 
 @app.get("/register")
 async def root():
@@ -59,4 +60,12 @@ async def getTask(id: int, data: Request):
 	clients[id].state = dat
 	clients[id].instr = {"instr":nextState[dat]}
 	print("saving screen")
+	return {"msg":"recv"}
+
+@app.post("/lobby")
+async def getTask(id: int, data: Request):
+	global lobbyId
+	dat = await data.body()
+	lobbyId = dat
+	print("Recieved lobby code",lobbyId)
 	return {"msg":"recv"}
