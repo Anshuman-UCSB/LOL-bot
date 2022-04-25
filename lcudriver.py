@@ -10,7 +10,6 @@ async def connect(connection):
 	await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
 	
 	queueUp = await connection.request('post','/lol-lobby/v2/lobby/matchmaking/search')
-	print(await queueUp.json())
 
 	# queueResponse = "initialized"
 	# while(queueResponse != "InProgress"):
