@@ -21,7 +21,7 @@ async def connect(connection):
 	await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
 	lobbyId = await getLobbyId(connection)
 	dat = {"id":lobbyId}
-	requests.post(host+'/lobby', data = dat)
+	requests.post(host+'/lobby', data = lobbyId)
 	print("Posted", dat)
 	
 if __name__ == "__main__":

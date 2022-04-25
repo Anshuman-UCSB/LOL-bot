@@ -59,7 +59,7 @@ nextState = {
 }
 
 @app.post("/tasks/{id}")
-async def getTask(id: int, data: Data):
+async def getTask(id: int, data: Request):
 	dat = await data.body()
 	clients[id].state = dat
 	clients[id].instr = {"instr":nextState[dat]}
@@ -67,7 +67,7 @@ async def getTask(id: int, data: Data):
 	return {"msg":"recv"}
 
 @app.post("/lobby")
-async def getTask(id: int, data: Request):
+async def getTask(id: int, data: Data):
 	global lobbyId
 	dat = await data.body()
 	lobbyId = dat
