@@ -51,6 +51,6 @@ while True:
 		# pyautogui.displayMousePosition()
 	elif instr['instr']=="createLobby":
 		lculeader.connector.start()
-	elif instr['instr']=="createLobby":
+	elif instr['instr']=="joinLobby":
 		lcudriver.connector.start()
 
