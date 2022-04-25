@@ -7,10 +7,6 @@ app = FastAPI()
 
 DEBUG = True
 
-from pydantic import BaseModel
-class Data(BaseModel):
-    user: str
-
 class Client():
 	def __init__(self, id):
 		self.id = id
@@ -54,6 +50,9 @@ async def getinstr(id:int):
 	except IndexError:
 		return {"msg":"Invalid id"}
 
+nextState0 = {
+	b"login": "joinLobby",
+}
 nextState = {
 	b"login": "createLobby",
 }
@@ -62,7 +61,7 @@ nextState = {
 async def getTask(id: int, data: Request):
 	dat = await data.body()
 	clients[id].state = dat
-	clients[id].instr = {"instr":nextState[dat]}
+	clients[id].instr = {"instr":(nextState if id>0 else nextState0)[dat]}
 	print("saving screen")
 	return {"msg":"recv"}
 
@@ -70,6 +69,10 @@ async def getTask(id: int, data: Request):
 async def getTask(data: Request):
 	global lobbyId
 	dat = await data.body()
-	lobbyId = dat
+	lobbyId = dat.decode('utf-8')
 	print("Recieved lobby code",lobbyId)
 	return {"msg":"recv"}
+
+@app.get("/lobby")
+async def getTask():
+	return lobbyId

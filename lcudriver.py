@@ -1,4 +1,5 @@
 from lcu_driver import Connector
+import requests
 from time import time, sleep
 
 connector = Connector()
@@ -28,13 +29,9 @@ async def getLobbyId(connection):
 
 @connector.ready
 async def connect(connection):
-
-	# await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
-	# print(await getIdName(connection))
-	# sleep(5)
-	# await invite(connection,*(91622819, 'Hevraz'))
-	await connection.request('post', '/lol-lobby/v2/party/2f5efd75-e75b-42d0-9260-8020090ae1d8/join')
-	print(await(await connection.request('get', '/lol-lobby/v2/lobby')).json())
+	req = requests.get(host+"/lobby")
+	partyId = req.body()
+	await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
 	
 	# await connection.request('post','/lol-lobby/v2/lobby/matchmaking/search')
 	# sleep(3)
