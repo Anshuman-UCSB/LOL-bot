@@ -6,10 +6,22 @@ from subprocess import run
 import pyautogui
 from utils import *
 
+HOST = "http://127.0.0.1:42069"
+
 class Client:
 	def __init__(self):
-		self.id = 1 # TODO: make request to server to ask for id
-		self.leader = (self.id == 1)
+		print(HOST+"/register")
+		try:
+			r = requests.get(HOST+"/register")
+			self.id = r.json()['id']
+			print("Registered client with id",self.id)
+		except KeyError:
+			print("ERROR: all client ID's are registered already")
+			exit(-2)
+		except:
+			print("ERROR: No response from server, is server running?")
+			exit(-1)
+		self.leader = (self.id == 0)
 		self.creds = ("expertdope3","expertdope3") # TODO: get from server
 	
 	def login(self):
@@ -31,16 +43,21 @@ class Client:
 	def enterLobby(self):
 		if self.isLeader:
 			connector = Connector()
-			async def getLobbyId(connection):
-				req = await connection.request('get', '/lol-lobby/v2/lobby')
-				json = await req.json()
-				return json['chatRoomId']
+
 			@connector.ready
 			async def connect(connection):
 				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
 				partyId = (await summoner.json())['partyId']
-				print(partyId)
+				print("Created lobby with id:",partyId)
 
+			connector.start()
+		else:
+			connector = Connector()
+
+			@connector.ready
+			async def connect(connection):
+				await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
+			
 			connector.start()
 
 	def isLeader(self):
@@ -51,7 +68,7 @@ class Client:
 
 def main():
 	c = Client()
-	c.enterLobby()
+	# c.enterLobby()
 	import debug
 	
 if __name__ == "__main__":
