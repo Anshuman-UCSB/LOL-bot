@@ -16,6 +16,8 @@ class Client:
 			r = requests.get(HOST+"/register")
 			self.id = r.json()['id']
 			print("Registered client with id",self.id)
+			self.creds = tuple(r.json()['account'].values())
+			print(self.creds)
 		except KeyError:
 			print("ERROR: all client ID's are registered already")
 			exit(-2)
@@ -23,7 +25,6 @@ class Client:
 			print("ERROR: No response from server, is server running?")
 			exit(-1)
 		self.leader = (self.id == 0)
-		self.creds = ("expertdope3","expertdope3") # TODO: get from server
 	
 	def login(self):
 		run("TASKKILL /F /IM LeagueClient.exe")

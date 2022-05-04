@@ -35,6 +35,7 @@ app.get("/register", (req, res) => {
     }
 
     return res.json({ id: config.id, "account" : accounts[config.id]});
+    config.id++;
   }
   res.status(500).json({ "msg": "error" });
 });

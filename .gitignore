@@ -3,3 +3,4 @@ venv
 
 server/node_modules/
 accounts.json
+.env
