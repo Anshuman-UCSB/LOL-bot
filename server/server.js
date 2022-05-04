@@ -18,7 +18,9 @@ var config = {
 };
 
 app.get("/register", (req, res) => {
-    
+    if (config.id != MAXID) {
+        res.json({"id": config.id})
+    }
 });
 
 app.get("/instr/:id", (req, res) => {});
