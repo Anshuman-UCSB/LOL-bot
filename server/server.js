@@ -10,6 +10,9 @@ const MAXID = DEBUG ? 2 : 5;
 function Client(id) {
   this.id = id;
   this.instr = "wait";
+
+  this.user;
+  this.pass;
 };
 
 var config = {
@@ -42,16 +45,17 @@ app.get("/instr/:id", (req, res) => {
     res.json({"instr": config.clients[req.params.id].instr})
 });
 
-app.get("lobby", (req, res) => {
-  res.json(config.lobbyID);
+app.get("/lobby", (req, res) => {
+  res.json({"id": config.lobbyID});
 });
 
 app.post("/tasks/:id", (req, res) => {
 
 });
 
-app.post("/lobby", (req, res) => {
-
+app.post("/lobby/:id", (req, res) => {
+    config.lobbyID = req.params.id;
+    res.json({"msg" : "success"})
 });
 
 app.listen(process.env.PORT, () => {

@@ -49,6 +49,7 @@ class Client:
 				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
 				partyId = (await summoner.json())['partyId']
 				print("Created lobby with id:",partyId)
+				r = requests.post(HOST+"/lobby/"+partyId)
 
 			connector.start()
 		else:
@@ -56,6 +57,9 @@ class Client:
 
 			@connector.ready
 			async def connect(connection):
+				r = requests.get(HOST+"/lobby/")
+				partyId = r.json()['id']
+				print("Recieved party id:",partyId)
 				await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
 			
 			connector.start()
