@@ -3,7 +3,11 @@ require('dotenv').config()
 
 const app = express();
 
-app.get("/register", (req, res) =>)
+app.get("/register", (req, res) => {
+
+})
+
+app.get()
 
 
 app.listen(process.env.PORT, () => {

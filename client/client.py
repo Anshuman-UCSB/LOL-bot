@@ -17,7 +17,13 @@ class Client:
 		pyautogui.press('win')
 		pyautogui.typewrite("League of legends")
 		pyautogui.press('enter')
-		
+		waitPixel(346, 143, (235,0,41))
+		sleep(.5)
+		pyautogui.click(282,316)
+		pyautogui.typewrite(self.creds[0])
+		pyautogui.press("tab")
+		pyautogui.typewrite(self.creds[1])
+		pyautogui.press("enter")
 
 	def isLeader(self):
 		return self.leader
