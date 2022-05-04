@@ -6,8 +6,9 @@ const DEBUG = true;
 const LEADER = 1;
 const MAXID = DEBUG ? 2 : 5;
 
-var Client = {
-  id: null,
+function Client(id) {
+  this.id = id;
+
   instr: "wait",
 };
 
@@ -19,6 +20,7 @@ var config = {
 
 app.get("/register", (req, res) => {
     if (config.id <= MAXID) {
+
         res.json({"id": config.id++})
     }
     res.status(500).json({"msg": "error boy"})
