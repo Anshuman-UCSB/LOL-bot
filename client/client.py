@@ -25,6 +25,8 @@ class Client:
 		pyautogui.typewrite(self.creds[1])
 		pyautogui.press("enter")
 
+		clickImage("images/ok.png")
+
 	def isLeader(self):
 		return self.leader
 	def getId(self):
