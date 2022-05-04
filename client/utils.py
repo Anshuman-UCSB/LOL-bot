@@ -8,6 +8,6 @@ def waitPixel(x, y, color):
 	while checkPixel(x,y,color) == False:
 		sleep(.1)
 
-def clickImage(image, confidence = .9):
-	x,y = pyautogui.locateCenterOnScreen(image, confidence=confidence)
+def clickImage(image):
+	x,y = pyautogui.locateCenterOnScreen(image)
 	pyautogui.click(x,y)

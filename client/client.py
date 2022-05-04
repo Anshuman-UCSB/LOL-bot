@@ -1,3 +1,4 @@
+import pygetwindow as gw
 import requests
 import os
 from time import sleep
@@ -36,7 +37,8 @@ class Client:
 		pyautogui.press("tab")
 		pyautogui.typewrite(self.creds[1])
 		pyautogui.press("enter")
-
+		assert (gw.getWindowsWithTitle('League')[0].topleft) == (110,320)
+		
 	def clickOk(self):
 		clickImage("images/ok.png")
 
