@@ -75,7 +75,8 @@ class Client:
 
 def main():
 	c = Client()
-	# c.enterLobby()
+	c.login()
+	c.enterLobby()
 	import debug
 	
 if __name__ == "__main__":
