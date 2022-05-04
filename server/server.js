@@ -8,9 +8,8 @@ const MAXID = DEBUG ? 2 : 5;
 
 function Client(id) {
   this.id = id;
-
   this.instr = "wait";
-};
+}
 
 var config = {
   clients: [],
@@ -19,11 +18,11 @@ var config = {
 };
 
 app.get("/register", (req, res) => {
-    if (config.id <= MAXID) {
-
-        res.json({"id": config.id++})
-    }
-    res.status(500).json({"msg": "error boy"})
+  if (config.id <= MAXID) {
+    config.clients.append(new Client(config.id++));
+    res.json({ id: config.id });
+  }
+  res.status(500).json({ msg: "error boy" });
 });
 
 app.get("/instr/:id", (req, res) => {});

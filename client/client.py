@@ -31,11 +31,15 @@ class Client:
 	def enterLobby(self):
 		if self.isLeader:
 			connector = Connector()
-
+			async def getLobbyId(connection):
+				req = await connection.request('get', '/lol-lobby/v2/lobby')
+				json = await req.json()
+				return json['chatRoomId']
 			@connector.ready
 			async def connect(connection):
 				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
 				print(await summoner.json())
+				print(getLobbyId(connection))
 
 			connector.start()
 
