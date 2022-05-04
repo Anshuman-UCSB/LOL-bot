@@ -7,6 +7,8 @@ const DEBUG = true;
 const LEADER = 0;
 const MAXID = DEBUG ? 2 : 5;
 
+var a
+
 function Client(id) {
   this.id = id;
   this.instr = "wait";
@@ -29,7 +31,7 @@ app.get("/register", (req, res) => {
         services.setup();
     }
 
-    return res.json({ id: config.id++});
+    return res.json({ id: config.id++, "account" : });
   }
   res.status(500).json({ "msg": "error" });
 });
