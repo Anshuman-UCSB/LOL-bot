@@ -7,7 +7,17 @@ app.get("/register", (req, res) => {
 
 })
 
-app.get()
+app.get("/instr/:id", (req, res) => {
+
+})
+
+app.post("/tasks/:id", (req, res) => {
+
+})
+
+app.post("/lobby", (req, res) => {
+
+})
 
 
 app.listen(process.env.PORT, () => {

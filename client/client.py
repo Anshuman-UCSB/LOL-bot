@@ -30,7 +30,11 @@ class Client:
 	def getId(self):
 		return self.id
 
-if __name__ == "__main__":
+
+def main():
 	c = Client()
 	c.login()
 	import debug
+	
+if __name__ == "__main__":
+	main()
