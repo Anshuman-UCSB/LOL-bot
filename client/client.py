@@ -46,13 +46,15 @@ class Client:
 		clickImage("images/ok.png")
 
 	def enterLobby(self):
+		print("Summoner name: ",self.getSummonerName())
 		if self.isLeader():
 			connector = Connector()
 
 			@connector.ready
 			async def connect(connection):
-				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":440})
-				partyId = (await summoner.json())['partyId']
+				lobby = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":440})
+				# print(await lobby.json())
+				partyId = (await lobby.json())['partyId']
 				print("Created lobby with id:",partyId)
 				r = requests.post(HOST+"/lobby/"+partyId)
 
@@ -68,6 +70,40 @@ class Client:
 				await connection.request('post', f'/lol-lobby/v2/party/{partyId}/join')
 			
 			connector.start()
+		self.selectFill()
+	
+	def selectFill(self):
+		connector = Connector()
+
+		@connector.ready
+		async def connect(connection):
+			req = await connection.request('put', '/lol-lobby/v1/lobby/members/localMember/position-preferences', data={
+				"firstPreference": "FILL"
+			})
+			print("FILL:",req)
+
+		connector.start()
+
+	def getSummonerName(self):
+		summName = None
+		connector = Connector()
+		@connector.ready
+		async def connect(connection):
+			nonlocal summName
+			req = await connection.request('get', '/lol-login/v1/session')
+			summName = (await req.json())['username']
+		connector.start()
+		return summName
+
+	def sendFriendRequest(self, username):
+		connector = Connector()
+		@connector.ready
+		async def connect(connection):
+			req = await connection.request('post', '/lol-chat/v1/friend-requests', data={
+				"name":username
+			})
+			print("Sent friend request to ",username)
+		connector.start()
 
 	def isLeader(self):
 		return self.leader

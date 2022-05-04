@@ -4,7 +4,7 @@ const app = express();
 
 const DEBUG = true;
 const LEADER = 0;
-const MAXID = DEBUG ? 3 : 5;
+const MAXID = DEBUG ? 25 : 5;
 
 var accounts = [];
 var setup = () => {
@@ -24,6 +24,7 @@ var config = {
   clients: [],
   id: 0,
   lobbyID: "",
+  leaderName: ""
 }; 
 
 app.get("/register", (req, res) => {
@@ -56,12 +57,21 @@ app.get("/lobby", (req, res) => {
   res.json({"id": config.lobbyID});
 });
 
+app.get("/leader", (req, res) => {
+    res.json({"id": config.leaderName})
+  });
+
 app.post("/tasks/:id", (req, res) => {
 
 });
 
 app.post("/lobby/:id", (req, res) => {
     config.lobbyID = req.params.id;
+    res.json({"msg" : "success"})
+});
+
+app.post("/leader/:id", (req, res) => {
+    config.leaderName.params.id;
     res.json({"msg" : "success"})
 });
 
