@@ -17,7 +17,6 @@ class Client:
 			self.id = r.json()['id']
 			print("Registered client with id",self.id)
 			self.creds = tuple(r.json()['account'].values())
-			print(self.creds)
 		except KeyError:
 			print("ERROR: all client ID's are registered already")
 			exit(-2)
@@ -38,6 +37,9 @@ class Client:
 		pyautogui.press("tab")
 		pyautogui.typewrite(self.creds[1])
 		pyautogui.press("enter")
+		sleep(5)
+		pyautogui.press("enter")
+		sleep(5)
 		# assert (gw.getWindowsWithTitle('League')[0].topleft) == (110,320)
 		
 	def clickOk(self):
@@ -75,7 +77,7 @@ class Client:
 
 def main():
 	c = Client()
-	c.login()
+	# c.login()
 	c.enterLobby()
 	import debug
 	

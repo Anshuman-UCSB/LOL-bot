@@ -34,8 +34,9 @@ app.get("/register", (req, res) => {
         accounts = setup();
     }
 
-    return res.json({ id: config.id, "account" : accounts[config.id]});
+    res.json({ id: config.id, "account" : accounts[config.id]});
     config.id++;
+    return;
   }
   res.status(500).json({ "msg": "error" });
 });
