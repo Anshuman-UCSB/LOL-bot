@@ -7,7 +7,7 @@ from subprocess import run
 import pyautogui
 from utils import *
 
-HOST = "http://127.0.0.1:42069"
+HOST = "http://72.205.82.44:42069"
 
 class Client:
 	def __init__(self):
