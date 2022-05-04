@@ -18,9 +18,10 @@ var config = {
 };
 
 app.get("/register", (req, res) => {
-    if (config.id != MAXID) {
-        res.json({"id": config.id++})
+    if (config.id < MAXID) {
+        return res.json({"id": config.id++})
     }
+    res.status(500).json({"msg": "error boy"})
 });
 
 app.get("/instr/:id", (req, res) => {});

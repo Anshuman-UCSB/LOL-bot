@@ -34,7 +34,7 @@ class Client:
 
 			@connector.ready
 			async def connect(connection):
-				summoner = await connection.request('get', '/lol-summoner/v1/current-summoner')
+				summoner = await connection.request('post', '/lol-lobby/v2/lobby')
 				print(await summoner.json())
 
 			connector.start()
