@@ -9,7 +9,7 @@ const MAXID = DEBUG ? 2 : 5;
 function Client(id) {
   this.id = id;
   this.instr = "wait";
-}
+};
 
 var config = {
   clients: [],
