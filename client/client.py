@@ -1,14 +1,14 @@
 import requests
 import os
 from time import sleep
-import lcu_driver
+from lcu_driver import Connector
 from subprocess import run
 import pyautogui
 from utils import *
 
 class Client:
 	def __init__(self):
-		self.id = 0 # TODO: make request to server to ask for id
+		self.id = 1 # TODO: make request to server to ask for id
 		self.leader = (self.id == 1)
 		self.creds = ("expertdope3","expertdope3") # TODO: get from server
 	
@@ -25,7 +25,19 @@ class Client:
 		pyautogui.typewrite(self.creds[1])
 		pyautogui.press("enter")
 
+	def clickOk(self):
 		clickImage("images/ok.png")
+
+	def enterLobby(self):
+		if self.isLeader:
+			connector = Connector()
+
+			@connector.ready
+			async def connect(connection):
+				summoner = await connection.request('get', '/lol-summoner/v1/current-summoner')
+				print(await summoner.json())
+
+			connector.start()
 
 	def isLeader(self):
 		return self.leader
@@ -35,7 +47,7 @@ class Client:
 
 def main():
 	c = Client()
-	c.login()
+	c.enterLobby()
 	import debug
 	
 if __name__ == "__main__":
