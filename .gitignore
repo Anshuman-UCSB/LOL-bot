@@ -1,3 +1,4 @@
-venv
 __pycache__
-accounts.txt
+venv
+
+server/node_modules/
