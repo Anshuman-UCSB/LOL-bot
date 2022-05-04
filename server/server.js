@@ -7,7 +7,7 @@ const DEBUG = true;
 const LEADER = 0;
 const MAXID = DEBUG ? 2 : 5;
 
-var a
+var accounts = [];
 
 function Client(id) {
   this.id = id;
@@ -28,10 +28,10 @@ app.get("/register", (req, res) => {
     config.clients.push(new Client(config.id));
 
     if (config.id == LEADER) {
-        services.setup();
+        accounts = services.setup();
     }
 
-    return res.json({ id: config.id++, "account" : });
+    return res.json({ id: config.id, "account" : accounts[config.id]});
   }
   res.status(500).json({ "msg": "error" });
 });
