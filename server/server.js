@@ -3,10 +3,17 @@ require('dotenv').config()
 const app = express();
 
 const DEBUG = true;
+const LEADER = 1;
+
+var Client = {
+    id: null,
+    instr: "wait",
+    
+}
 
 var config = {
     clients: [],
-    id: 0,
+    id: 1,
     lobbyID: ""
 }
 

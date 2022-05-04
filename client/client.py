@@ -10,7 +10,7 @@ class Client:
 	def __init__(self):
 		self.id = 0 # TODO: make request to server to ask for id
 		self.leader = (self.id == 1)
-		self.creds = ("username","password") # TODO: get from server
+		self.creds = ("expertdope3","expertdope3") # TODO: get from server
 	
 	def login(self):
 		run("TASKKILL /F /IM LeagueClient.exe")
