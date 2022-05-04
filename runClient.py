@@ -1,6 +1,7 @@
 from subprocess import run
 import sys
 import traceback
+sys.path.append("./client")
 run(['git','pull'])
 try:
 	import client
