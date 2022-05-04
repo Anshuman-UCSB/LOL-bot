@@ -34,7 +34,7 @@ class Client:
 
 			@connector.ready
 			async def connect(connection):
-				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":810})
+				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":960})
 				print(await summoner.json())
 
 			connector.start()
