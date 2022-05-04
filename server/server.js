@@ -4,7 +4,7 @@ const app = express();
 
 const DEBUG = true;
 const LEADER = 0;
-const MAXID = DEBUG ? 2 : 5;
+const MAXID = DEBUG ? 3 : 5;
 
 var accounts = [];
 var setup = () => {
@@ -24,7 +24,7 @@ var config = {
   clients: [],
   id: 0,
   lobbyID: "",
-};
+}; 
 
 app.get("/register", (req, res) => {
   if (config.id < MAXID) {

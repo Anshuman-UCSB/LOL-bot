@@ -46,12 +46,12 @@ class Client:
 		clickImage("images/ok.png")
 
 	def enterLobby(self):
-		if self.isLeader:
+		if self.isLeader():
 			connector = Connector()
 
 			@connector.ready
 			async def connect(connection):
-				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":430})
+				summoner = await connection.request('post', '/lol-lobby/v2/lobby', data={"queueId":440})
 				partyId = (await summoner.json())['partyId']
 				print("Created lobby with id:",partyId)
 				r = requests.post(HOST+"/lobby/"+partyId)
