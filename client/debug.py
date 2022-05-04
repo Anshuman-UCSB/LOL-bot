@@ -1,5 +1,5 @@
 import pygetwindow as gw
-print(gw.getWindowsWithTitle('Visual Studio')[0])
+print(gw.getWindowsWithTitle('League')[0])
 
 import pyautogui
 pyautogui.displayMousePosition()

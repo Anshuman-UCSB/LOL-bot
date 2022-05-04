@@ -1,6 +1,5 @@
 const express = require("express");
 require("dotenv").config();
-const services = require("./services")
 const app = express();
 
 const DEBUG = true;
